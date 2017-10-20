@@ -6,7 +6,7 @@ public class Calc {
 
 	public void pCalc(ArrayList<Input> operators, ArrayList<String> inputArrayList) {
 
-		while (inputArrayList.contains(")")) {
+		while (inputArrayList.contains("(")) {
 			int left = 0;
 			int right= 0;
 			for (int x = 0; x < inputArrayList.size(); x++) {

@@ -173,7 +173,10 @@ public class JavaFxGUI extends Application implements EventHandler<ActionEvent> 
 		
 		String result = controller.con(display.getText());
 		
-		if(text.equals("=")) {
+		if(result.equals("not valid input")) {
+			display.setText(result);
+		}
+		else if(text.equals("=")) {
 			display.setText(display.getText().concat(result));
 			System.out.println("settext"+ result);
 		}

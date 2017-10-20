@@ -16,15 +16,20 @@ public class Controller {
 
 		if (inputString.contains("=")) {
 			l.operators(inputString, inputArrayList);
-
+			System.out.println(inputArrayList + "before");
+			if(inputString.contains("(")&&inputString.contains(")")) {
 			c.pCalc(operators, inputArrayList);
-
+			System.out.println(inputArrayList + "after");
+			}else if(inputString.contains("(") && !inputString.contains(")")||!inputString.contains("(") && inputString.contains(")")) {
+				return "not valid input";
+			}
 			System.out.println(inputArrayList);
 			
 			c.calcUP(operators, inputArrayList);
 			System.out.println(inputArrayList);
+			return inputArrayList.get(0);
 		}
-		return inputArrayList.get(0);
+		return "";
 	}
 	
 	// 3+(4-5*2)+3-(3+4+(5*3)+3)-3
