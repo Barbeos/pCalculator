@@ -5,12 +5,11 @@ import java.util.ArrayList;
 public class Calc {
 
 	public void pCalc(ArrayList<Input> operators, ArrayList<String> inputArrayList) {
-
+		// While løkken håndtere parenteser i udregningen
 		while (inputArrayList.contains("(")) {
 			int left = 0;
 			int right= 0;
 			for (int x = 0; x < inputArrayList.size(); x++) {
-
 				ArrayList<String> inputArrayListTemp = new ArrayList<String>();
 				
 				if (inputArrayList.get(x).equals("(")) {
@@ -22,24 +21,20 @@ public class Calc {
 					inputArrayListTemp.addAll(inputArrayList.subList(left+ 1, right));
 
 					while (inputArrayListTemp.contains("*")) {
-						int index = inputArrayListTemp.indexOf("*");
 						operators.add(new Gange());
-						dos(operators, inputArrayListTemp, index);
+						dos(operators, inputArrayListTemp, "*");
 					}
 					while (inputArrayListTemp.contains("/")) {
-						int index = inputArrayListTemp.indexOf("/");
 						operators.add(new Divider());
-						dos(operators, inputArrayListTemp, index);
+						dos(operators, inputArrayListTemp, "/");
 					}
 					while (inputArrayListTemp.contains("-")) {
-						int index = inputArrayListTemp.indexOf("-");
 						operators.add(new Minus());
-						dos(operators, inputArrayListTemp, index);
+						dos(operators, inputArrayListTemp, "-");
 					}
 					while (inputArrayListTemp.contains("+")) {
-						int index = inputArrayListTemp.indexOf("+");
 						operators.add(new Plus());
-						dos(operators, inputArrayListTemp, index);
+						dos(operators, inputArrayListTemp, "+");
 					}
 
 					inputArrayList.subList(left, right + 1).clear();
@@ -49,32 +44,28 @@ public class Calc {
 		}
 	}
 	
-	
+	//her regner vi uden parenteser
 	public void calcUP(ArrayList<Input> operators, ArrayList<String> inputArrayList) {
 		while (inputArrayList.contains("*")) {
-			int index = inputArrayList.indexOf("*");
 			operators.add(new Gange());
-			dos(operators, inputArrayList, index);
+			dos(operators, inputArrayList, "*");
 		}
 		while (inputArrayList.contains("/")) {
-			int index = inputArrayList.indexOf("/");
 			operators.add(new Divider());
-			dos(operators, inputArrayList, index);
+			dos(operators, inputArrayList, "/");
 		}
 		while (inputArrayList.contains("-")) {
-			int index = inputArrayList.indexOf("-");
 			operators.add(new Minus());
-			dos(operators, inputArrayList, index);
+			dos(operators, inputArrayList, "-");
 		}
 		while (inputArrayList.contains("+")) {
-			int index = inputArrayList.indexOf("+");
 			operators.add(new Plus());
-			dos(operators, inputArrayList, index);
+			dos(operators, inputArrayList, "+");
 		}
-		
 	}
 	
-	public void dos(ArrayList<Input> operators, ArrayList<String> inputArrayListTemp, int index) {
+	public void dos(ArrayList<Input> operators, ArrayList<String> inputArrayListTemp, String operator) {
+		int index = inputArrayListTemp.indexOf(operator);
 		BinaryOperator g = (BinaryOperator) operators.get(0);
 		g.setA(Double.valueOf(inputArrayListTemp.get(index - 1)));
 		g.setB(Double.valueOf(inputArrayListTemp.get(index + 1)));

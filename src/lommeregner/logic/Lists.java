@@ -9,7 +9,6 @@ public class Lists {
 		if (input.contains("=")) {
 			String[] s = input.split(
 					"(?<=\\+)|(?=\\+)|(?=\\*)|(?<=\\*)|(?=\\/)|(?<=\\/)|(?=\\-)|(?<=\\-)|(?=\\()|(?<=\\()|(?=\\))|(?<=\\))|=|(?=Sin¯¹)|(?<=Sin¯¹)");
-			System.out.println(s + "array");
 			for (String g : s) {
 				inputArrayList.add(g);
 			}

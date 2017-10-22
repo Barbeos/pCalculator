@@ -170,7 +170,6 @@ public class JavaFxGUI extends Application implements EventHandler<ActionEvent> 
 
 		display.setText(display.getText() + text);
 		
-		
 		String result = controller.con(display.getText());
 		
 		if(result.equals("not valid input")) {
@@ -178,7 +177,6 @@ public class JavaFxGUI extends Application implements EventHandler<ActionEvent> 
 		}
 		else if(text.equals("=")) {
 			display.setText(display.getText().concat(result));
-			System.out.println("settext"+ result);
 		}
 	}
 
